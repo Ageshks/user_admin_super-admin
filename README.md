@@ -1,2 +1,3 @@
-# Admin_User_Registration_Login_Spring_Boot_Application
-Admin and User Registration Using Spring Boot
+- user login and admin login are set on the same login page 
+- but the data from the bacground is not imported
+- tryed to fetch data from the database but error page is showing
