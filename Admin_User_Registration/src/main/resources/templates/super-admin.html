@@ -53,7 +53,33 @@
         </a>
         
         </span>
-
+        <h2> USERS AND ADMINS</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Modify</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through users and display each user's details -->
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}">1</td>
+                    <td th:text="${user.fullname}">John Doe</td>
+                    <td th:text="${user.email}">john.doe@example.com</td>
+                    <td th:text="${user.role}">USER</td>
+                    <td>
+                        <form th:action="@{/super-admin/delete-user/{id}(id=${user.id})}" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    
 </body>
 </html>
