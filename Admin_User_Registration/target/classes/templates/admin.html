@@ -1,5 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,47 +37,71 @@
         h2 {
             color: #45b6fe;
         }
-
-        /* Add more styles and components for your dashboard here */
     </style>
 </head>
 <body>
     <div class="header">
         <h1>ADMIN Dashboard</h1>
     </div>
+
     <div class="container">
-        <h2>Welcome, [[${user.getFullname()}]]</h2>
-        
-        <span sec:authorize="isAuthenticated">
-        <a th:href="@{/logout}">
-         Logout
-        
-        </a>
-        
+        <!-- Display welcome message with the user's full name -->
+        <h2>Welcome, [[${user.fullname}]]</h2>
+
+        <!-- Logout button (ensure Spring Security config is in place) -->
+        <span sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" style="background-color: #45b6fe; border-radius: 10px;">Logout</button>
+            </form>
         </span>
 
-        <h2>User List</h2>
-    
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Role</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Loop through users and display each user's details -->
-            <tr th:each="user : ${users}">
-                <td th:text="${user.id}">1</td>
-                <td th:text="${user.fullname}"></td>
-                <td th:text="${user.email}"></td>
-                <td th:text="${user.role}"></td>
-            </tr>
-        </tbody>
-    </table>
+        <h2>Users List</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Modify </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterate over the users list -->
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.fullname}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td>
+                        <form th:action="@{/admin/delete-user/{id}(id=${user.id})}" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                                    </tr>
+                
+            </tbody>
+        </table>
 
+
+        <h2>Bus Routes</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Route Number</th>
+            <th>Start Location</th>
+            <th>End Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="route : ${routes}">
+            <td th:text="${route.routeNumber}"></td>
+            <td th:text="${route.startLocation}"></td>
+            <td th:text="${route.endLocation}"></td>
+        </tr>
+    </tbody>
+</table>
     </div>
+
+    
+
 </body>
 </html>

@@ -15,12 +15,10 @@
            Logout Successfuly
         </div>
         
-        <h2>Admin and User Login Page</h2>
+        <h2>LOG-IN</h2>
         <form 
          th:action="@{/login}"
-         method="post"
-         
-        >
+         method="post">
             
             
             <div class="form-group">
@@ -34,7 +32,9 @@
             </div>
             <input type="submit" value="login">
         </form>
-        
+        <div class="registration-btn">
+            <a class="btn" th:href="@{/registration}"><p style="color: white;">Don't have an account? Register</p></a>
+        </div>
     </div>
 </body>
 </html>

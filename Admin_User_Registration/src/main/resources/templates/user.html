@@ -30,10 +30,19 @@
             background-color: #0e2433;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            justify-content: space-around;
         }
 
         h2 {
             color: #45b6fe;
+        }
+        .card{
+            background-color: #388ac1;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(160, 10, 10, 0.2);
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
         }
 
         /* Add more styles and components for your dashboard here */
@@ -47,12 +56,50 @@
         <h2>Welcome, [[${user.getFullname()}]]</h2>
         
         <span sec:authorize="isAuthenticated">
-        <a th:href="@{/logout}">
-         Logout
-        
-        </a>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" style="background-color: #45b6fe; border-radius: 10px;">Logout</button>
+            </form>
+            
         
         </span>
+
+        <div class="card">
+            <div class="container">
+                <h3>first</h3>
+                <p>product 1</p>
+                <button>Add To Cart</button>
+
+            </div>
+            <div class="container">
+                <img src="" alt="image">
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="container">
+                <h3>Second</h3>
+                <p>product 2</p>
+                <button>Add To Cart</button>
+            </div>
+            <div class="container">
+                <img src="" alt="image">
+            </div>
+
+        </div>
+
+
+        <div class="card">
+            <div class="container">
+                <h3>Third</h3>
+                <p>product 3</p>
+                <button>Add To Cart</button>
+            </div>
+            <div class="container">
+                <img src="" alt="image">
+            </div>
+
+        </div>
 
     </div>
 </body>

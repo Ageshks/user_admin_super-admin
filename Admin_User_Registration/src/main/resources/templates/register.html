@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
         <div class="message" th:if="${message != null}">
            [[${message}]]
         </div>
-        <h2>Registration Form</h2>
+        <h2>Registration</h2>
         <form 
          th:action="@{/registration}"
          method="post"
@@ -34,7 +34,12 @@
             </div>
             <input type="submit" value="Register">
         </form>
-        
+        <div class="login-btn">
+            <a class="btn" th:href="@{/login}">
+                <p style="color: white;">Already have an account?  Login</p></a>
+        </div>
     </div>
 </body>
 </html>
+
+
