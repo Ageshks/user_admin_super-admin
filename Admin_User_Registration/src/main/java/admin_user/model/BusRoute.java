@@ -1,6 +1,5 @@
 package admin_user.model;
 
-import java.time.LocalTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,18 +16,28 @@ public class BusRoute {
     private String routeNumber;
     private String startLocation;
     private String endLocation;
-    private LocalTime departureTime;
+    private String departureTime;
+    private int availableSeats;
+    private int totalSeats;
+    private double pricePerSeat;
 
-    public BusRoute() {}
-
-    // Added departureTime parameter to the constructor
-    public BusRoute(String routeNumber, String startLocation, String endLocation, LocalTime departureTime) {
-        this.routeNumber = routeNumber;
-        this.startLocation = startLocation;
-        this.endLocation = endLocation;
-        this.departureTime = departureTime;
+    public double getPricePerSeat() {
+        return pricePerSeat;
     }
 
+    public void setPricePerSeat(double pricePerSeat) {
+        this.pricePerSeat = pricePerSeat;
+    }
+
+    public int getTotalSeats() {
+        return totalSeats;
+    }
+
+    public void setTotalSeats(int totalSeats) {
+        this.totalSeats = totalSeats;
+    }
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -61,13 +70,19 @@ public class BusRoute {
         this.endLocation = endLocation;
     }
 
-    public LocalTime getDepartureTime() {
+    public String getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(LocalTime departureTime) {
+    public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
     }
 
-    
+    public int getAvailableSeats() {
+        return availableSeats;
+    }
+
+    public void setAvailableSeats(int availableSeats) {
+        this.availableSeats = availableSeats;
+    }
 }

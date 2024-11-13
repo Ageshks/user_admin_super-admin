@@ -14,15 +14,29 @@
         </a>
     </div>
     <div>
-        <a th:href="@{/super-admin-page/}">Back to Dashboard</a>
+        <a th:href="@{/super-admin}">Back to Dashboard</a>
     </div>
+    <div>
+        <div>
+            <!-- Try these different formats -->
+            <a th:href="@{/super-admin/}">Back to Dashboard</a>
+            <!-- or -->
+            <a href="/super-admin">Back to Dashboard</a>
+            <!-- or -->
+            <a th:href="@{/super-admin}">Back to Dashboard</a>
+        </div>
+    </div>
+    
     <table border="1">
         <thead>
             <tr>
                 <th>Route Number</th>
                 <th>Start Location</th>
                 <th>End Location</th>
-                <th>Departure Time </th>
+                <th>Departure Time</th>
+                <th>availableSeats</th>
+                <th>totalseats</th>
+                <th>pricePerSeat</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -32,10 +46,13 @@
                 <td th:text="${route.startLocation}"></td>
                 <td th:text="${route.endLocation}"></td>
                 <td th:text="${route.departureTime}"></td>
+                <td th:text="${route.availableSeats}"></td>
+                <td th:text="${route.totalSeats}"></td>
+                <td th:text="${route.pricePerSeat}"></td>
                 <td>
-                    <a th:href="@{'/super-admin/edit-route/' + ${route.id}}">Edit route</a> | 
-                    <a th:href="@{'/super-admin/edit-route/' + ${route.id}}">Change time</a> |
-                    <a th:href="@{'/super-admin/delete-route/' + ${route.id}}"
+                    <a th:href="@{/super-admin/edit-route/{id}(id=${route.id})}">Edit Route</a> | 
+                    <a th:href="@{/super-admin/edit-route/{id}(id=${route.id})}">Change Time</a> |
+                    <a th:href="@{/super-admin/delete-route/{id}(id=${route.id})}"
                        onclick="return confirm('Are you sure you want to delete this route?');">Delete</a>
                 </td>                
             </tr>

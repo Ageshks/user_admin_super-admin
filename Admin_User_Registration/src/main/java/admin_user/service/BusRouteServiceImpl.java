@@ -16,9 +16,8 @@ public class BusRouteServiceImpl implements BusRouteService {
 
     @Override
     public List<BusRoute> getAllRoutes() {
-    return busRouteRepository.findAll();
+        return busRouteRepository.findAll();
     }
-
 
     @Override
     public void addBusRoute(BusRoute busRoute) {
@@ -36,8 +35,12 @@ public class BusRouteServiceImpl implements BusRouteService {
     }
 
     @Override
-    public void updateBusRoute(BusRoute busRoute){
+    public void updateBusRoute(BusRoute busRoute) {
         busRouteRepository.save(busRoute);
     }
     
+    @Override
+    public List<BusRoute> getAvailableRoutes() {
+        return busRouteRepository.findByAvailableSeatsGreaterThan(0);
+    }
 }
