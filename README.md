@@ -29,6 +29,9 @@ This project is a User Management System built using Spring Boot and Thymeleaf. 
  2. LogIn Page: for users to login
  3. Admin Page
  4. Super Admin Page
+ 5. user dashboard
+ 6. admin dashboard
+ 7. super admin dashboard
 
 ## How to Run the Project
 
